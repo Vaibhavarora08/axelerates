@@ -1,0 +1,17 @@
+- hosts: all
+  user:ec2-user 
+
+  tasks 
+   - name: Add a list of users
+     user: 
+       name:developer  
+       state:present
+    
+   - name: Create SSH Key for user developer in ~developer/.ssh/id_rsa
+     user:
+       name:developer
+       generate_ssh_key:yes
+       ssh_key_bits:2048
+       ssh_key_file: .ssh/id_rsa    
+    
+
